@@ -5,26 +5,20 @@ const storyMilestones = [
   {
     year: "2018",
     title: "First Meeting",
-    description: "We met at a mutual friend's summer barbecue. James spilled lemonade on Emma's dress, and the rest is history.",
+    description: "We met while hanging out with friends. A casual gathering turned into the beginning of our forever.",
     icon: "☀"
   },
   {
-    year: "2019",
-    title: "First Date",
-    description: "A picnic in the park turned into a six-hour conversation about everything and nothing.",
-    icon: "🌸"
-  },
-  {
-    year: "2021",
-    title: "Moving In Together",
-    description: "We took the leap and got our first apartment together, complete with a tiny balcony garden.",
-    icon: "🏡"
-  },
-  {
     year: "2024",
-    title: "The Proposal",
-    description: "James proposed at sunset on the same beach where we had our first vacation together.",
+    title: "Engagement",
+    description: "Khalil proposed in a moment of pure magic, asking the question that would change our lives forever.",
     icon: "💍"
+  },
+  {
+    year: "2025",
+    title: "Marriage",
+    description: "We invite you to join us as we say 'I do' and celebrate the start of our greatest adventure.",
+    icon: "💒"
   }
 ];
 
@@ -43,11 +37,11 @@ const OurStorySection = () => {
           </p>
           <VintageDivider />
         </div>
-        
+
         {/* Story Timeline */}
         <div className="space-y-8">
           {storyMilestones.map((milestone, index) => (
-            <DecorativeFrame 
+            <DecorativeFrame
               key={milestone.year}
               className="bg-card"
               withCorners={index === 0 || index === storyMilestones.length - 1}
@@ -60,7 +54,7 @@ const OurStorySection = () => {
                     <span className="text-xs text-primary font-semibold">{milestone.year}</span>
                   </div>
                 </div>
-                
+
                 {/* Content */}
                 <div className="flex-1">
                   <h3 className="font-serif text-2xl text-primary mb-2">
@@ -74,7 +68,7 @@ const OurStorySection = () => {
             </DecorativeFrame>
           ))}
         </div>
-        
+
         {/* Closing Quote */}
         <div className="text-center mt-16">
           <blockquote className="font-serif text-2xl md:text-3xl text-primary italic">

@@ -9,7 +9,7 @@ import InvitationMessage from "@/components/InvitationMessage";
 import HeroSection from "@/components/wedding/HeroSection";
 import OurStorySection from "@/components/wedding/OurStorySection";
 import PhotoStrip from "@/components/wedding/PhotoStrip";
-import RSVPSection from "@/components/wedding/RSVPSection";
+
 import FooterSection from "@/components/wedding/FooterSection";
 
 const Index = () => {
@@ -39,7 +39,7 @@ const Index = () => {
 
   return (
     <main className="bg-wedding-cream min-h-screen font-serif text-wedding-charcoal overflow-hidden">
-      <MusicPlayer />
+      <MusicPlayer autoPlayTrigger={isEnvelopeOpen} />
 
       <AnimatePresence mode="wait">
         {!showContent ? (
@@ -94,7 +94,7 @@ const Index = () => {
 
             <InvitationMessage />
 
-            <RSVPSection />
+
 
             <FooterSection />
           </motion.div>

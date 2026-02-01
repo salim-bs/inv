@@ -80,11 +80,11 @@ export default {
       },
       fontFamily: {
         // Merged Fonts
-        script: ["'Great Vibes'", "cursive"],
+        script: ["'Pinyon Script'", "cursive"],
         elegant: ["'Cormorant Garamond'", "serif"],
-        sans: ["'Josefin Sans'", "sans-serif"],
+        sans: ["'Montserrat'", "sans-serif"],
         // Remix Fonts (kept for fallbacks or specific sections if needed)
-        serif: ["'Playfair Display'", "Georgia", "serif"],
+        serif: ["'Cormorant Garamond'", "serif"],
         "sans-alt": ["'Nunito'", "system-ui", "sans-serif"],
       },
       borderRadius: {

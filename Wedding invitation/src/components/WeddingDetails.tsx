@@ -1,25 +1,30 @@
-import { motion, Variants } from "framer-motion";
-import { Calendar, MapPin, Clock, Heart } from "lucide-react";
+import { useState } from "react";
+import { motion, Variants, AnimatePresence } from "framer-motion";
+import { Calendar, MapPin, Clock, Heart, ArrowLeft, Church, PartyPopper, Gem } from "lucide-react";
+
+export interface WeddingLocation {
+    id: string;
+    title: string; // e.g. "Ceremony"
+    name: string; // Venue Name
+    address: string;
+    time: string;
+    mapEmbedUrl: string;
+    icon?: 'church' | 'party' | 'ring';
+}
 
 interface WeddingDetailsProps {
     groomName: string;
     brideName: string;
-    date: string;
-    time: string;
-    venue: string;
-    venueAddress: string;
-    mapEmbedUrl: string;
+    locations: WeddingLocation[];
 }
 
 const WeddingDetails = ({
     groomName,
     brideName,
-    date,
-    time,
-    venue,
-    venueAddress,
-    mapEmbedUrl,
+    locations
 }: WeddingDetailsProps) => {
+    const [selectedLocation, setSelectedLocation] = useState<WeddingLocation | null>(null);
+
     const containerVariants: Variants = {
         hidden: { opacity: 0 },
         visible: {
@@ -32,111 +37,132 @@ const WeddingDetails = ({
     };
 
     const itemVariants: Variants = {
-        hidden: { opacity: 0, y: 30 },
+        hidden: { opacity: 0, y: 20 },
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] },
+            transition: { duration: 0.5 },
         },
     };
 
     return (
-        <motion.div
-            className="w-full px-6 py-12 flex flex-col items-center bg-wedding-cream"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-        >
-            {/* Decorative top flourish */}
-            <motion.div variants={itemVariants} className="mb-8">
-                <svg width="120" height="40" viewBox="0 0 120 40" className="text-wedding-sage">
-                    <path
-                        d="M60 35C40 35 25 20 5 20M60 35C80 35 95 20 115 20M60 5C40 5 25 20 5 20M60 5C80 5 95 20 115 20"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                    />
-                    <circle cx="60" cy="20" r="3" fill="currentColor" />
-                </svg>
-            </motion.div>
-
-            {/* Names Section */}
-            <motion.div variants={itemVariants} className="text-center mb-10">
-                <p className="font-sans text-wedding-sage text-sm tracking-[0.3em] uppercase mb-4">
-                    Together with their families
-                </p>
-                <h1 className="font-elegant text-5xl md:text-6xl text-wedding-charcoal leading-tight">
-                    {groomName}
-                </h1>
-                <motion.div
-                    className="flex items-center justify-center my-4"
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
-                    <Heart className="w-6 h-6 text-wedding-sage fill-wedding-sage" />
-                </motion.div>
-                <h1 className="font-elegant text-5xl md:text-6xl text-wedding-charcoal leading-tight">
-                    {brideName}
-                </h1>
-                <p className="font-script text-xl text-wedding-sage-muted mt-6 italic">
-                    Request the pleasure of your company
-                </p>
-            </motion.div>
-
-            {/* Divider */}
-            <motion.div variants={itemVariants} className="w-24 h-px bg-wedding-sage/50 mb-10" />
-
-            {/* Date & Time */}
-            <motion.div variants={itemVariants} className="text-center mb-10">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                    <Calendar className="w-5 h-5 text-wedding-sage" />
-                    <p className="font-elegant text-2xl text-wedding-charcoal">{date}</p>
-                </div>
-                <div className="flex items-center justify-center gap-2">
-                    <Clock className="w-5 h-5 text-wedding-sage" />
-                    <p className="font-sans text-lg text-wedding-charcoal/80">{time}</p>
-                </div>
-            </motion.div>
-
-            {/* Venue */}
-            <motion.div variants={itemVariants} className="text-center mb-8">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                    <MapPin className="w-5 h-5 text-wedding-sage" />
-                    <p className="font-elegant text-2xl text-wedding-charcoal">{venue}</p>
-                </div>
-                <p className="font-sans text-sm text-wedding-charcoal/60 max-w-xs">{venueAddress}</p>
-            </motion.div>
-
-            {/* Map */}
+        <section className="w-full px-6 py-16 flex flex-col items-center bg-wedding-cream min-h-[600px] justify-center">
+            {/* Header - Always visible */}
             <motion.div
-                variants={itemVariants}
-                className="w-full max-w-md rounded-xl overflow-hidden shadow-lg border border-wedding-sage/20"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={containerVariants}
+                className="text-center mb-12"
             >
-                <iframe
-                    src={mapEmbedUrl}
-                    width="100%"
-                    height="250"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Wedding Venue Location"
-                />
+                <motion.div variants={itemVariants} className="flex flex-col items-center">
+                    <p className="font-sans text-wedding-sage text-sm tracking-[0.3em] uppercase mb-4">
+                        The Details
+                    </p>
+                    <div className="flex items-center gap-4 font-elegant text-4xl md:text-5xl text-wedding-charcoal">
+                        <span>{groomName}</span>
+                        <Heart className="w-5 h-5 text-wedding-sage fill-wedding-sage/50" />
+                        <span>{brideName}</span>
+                    </div>
+                </motion.div>
             </motion.div>
 
-            {/* Decorative bottom flourish */}
-            <motion.div variants={itemVariants} className="mt-10">
-                <svg width="80" height="30" viewBox="0 0 80 30" className="text-wedding-sage/50">
-                    <path
-                        d="M40 5C25 5 15 15 0 15M40 5C55 5 65 15 80 15M40 25C25 25 15 15 0 15M40 25C55 25 65 15 80 15"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                    />
-                </svg>
-            </motion.div>
-        </motion.div>
+            <AnimatePresence mode="wait">
+                {!selectedLocation ? (
+                    /* SELECTION VIEW */
+                    <motion.div
+                        key="selection"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5 }}
+                        className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl"
+                    >
+                        {locations.map((loc) => (
+                            <motion.div
+                                key={loc.id}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => setSelectedLocation(loc)}
+                                className="cursor-pointer group relative p-8 border border-wedding-sage/30 rounded-lg bg-white/50 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center gap-4"
+                            >
+                                {/* Corner Decorations */}
+                                <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-wedding-sage/40" />
+                                <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-wedding-sage/40" />
+                                <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-wedding-sage/40" />
+                                <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-wedding-sage/40" />
+
+                                <div className="mb-2">
+                                    {loc.icon === 'party' ? (
+                                        <PartyPopper className="w-10 h-10 text-wedding-rose" />
+                                    ) : loc.icon === 'ring' ? (
+                                        <Gem className="w-10 h-10 text-wedding-gold" />
+                                    ) : (
+                                        <Church className="w-10 h-10 text-wedding-gold" />
+                                    )}
+                                </div>
+
+                                <h3 className="font-elegant text-3xl text-wedding-charcoal">{loc.title}</h3>
+                                <p className="font-bold text-wedding-sage">{loc.name}</p>
+                                <p className="font-sans text-sm text-wedding-charcoal/70 max-w-[200px]">{loc.address}</p>
+
+                                <span className="mt-4 text-xs tracking-widest uppercase text-wedding-sage border-b border-transparent group-hover:border-wedding-sage transition-all">
+                                    View on Map
+                                </span>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                ) : (
+                    /* DETAILS VIEW */
+                    <motion.div
+                        key="details"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.5 }}
+                        className="w-full max-w-2xl flex flex-col items-center"
+                    >
+                        <button
+                            onClick={() => setSelectedLocation(null)}
+                            className="self-start mb-6 text-wedding-sage hover:text-wedding-charcoal flex items-center gap-2 text-sm uppercase tracking-wider transition-colors"
+                        >
+                            <ArrowLeft className="w-4 h-4" /> Back to Locations
+                        </button>
+
+                        <div className="bg-white p-8 rounded-xl shadow-lg border border-wedding-sage/10 w-full text-center">
+                            <h2 className="font-elegant text-4xl text-wedding-charcoal mb-2">{selectedLocation.title}</h2>
+                            <p className="font-sans text-wedding-sage mb-8 uppercase tracking-widest text-sm">
+                                {selectedLocation.name}
+                            </p>
+
+                            <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
+                                <div className="flex items-center gap-2">
+                                    <Clock className="w-5 h-5 text-wedding-sage" />
+                                    <span className="font-sans text-lg text-wedding-charcoal">{selectedLocation.time}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <MapPin className="w-5 h-5 text-wedding-sage" />
+                                    <span className="font-sans text-lg text-wedding-charcoal">{selectedLocation.address}</span>
+                                </div>
+                            </div>
+
+                            <div className="w-full rounded-lg overflow-hidden border border-wedding-sage/20 h-[300px]">
+                                <iframe
+                                    src={selectedLocation.mapEmbedUrl}
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title={selectedLocation.title}
+                                />
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </section>
     );
 };
 

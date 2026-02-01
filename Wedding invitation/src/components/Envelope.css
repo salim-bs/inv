@@ -2,10 +2,13 @@
 :root {
     --sage-green: #9CAF88;
     --dark-sage: #606E5C;
-    --cream: #F5F5F0;
-    --paper-white: #FDFBF7;
+    --paper-cream: #f4f1ea;
+    --paper-shadow: #e0ddd5;
+    --paper-dark: #d5d2ca;
+    --wax-red: #c92b2b;
+    --wax-dark: #8a1c1c;
     --gold: #D4AF37;
-    --text-dark: #2C3E50;
+    --text-dark: #4a4a4a;
     --font-serif: 'Cormorant Garamond', serif;
     --font-script: 'Pinyon Script', cursive;
 }
@@ -34,26 +37,31 @@
     z-index: 1000;
     perspective: 1500px;
     background-color: var(--sage-green);
+    /* Keep background sage for contrast */
     transition: opacity 1s ease 1s, visibility 1s ease 1s;
 }
 
 .envelope-wrapper {
     position: relative;
-    width: 300px;
-    height: 200px;
+    width: 360px;
+    height: 240px;
     transform-style: preserve-3d;
     cursor: pointer;
 }
 
+/* Main Envelope Body */
 .envelope {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #8A9A5B;
+    background-color: var(--paper-cream);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transform-style: preserve-3d;
     transition: transform 0.6s ease;
     z-index: 10;
+
+    /* Paper texture effect */
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
 }
 
 .flap {
@@ -63,38 +71,42 @@
     border-style: solid;
 }
 
+/* Top Flap - The main opening flap */
 .top-flap {
     top: 0;
     left: 0;
-    border-width: 110px 150px 0 150px;
-    border-color: #7D8E58 transparent transparent transparent;
-    background: transparent;
+    border-width: 130px 180px 0 180px;
+    border-color: var(--paper-shadow) transparent transparent transparent;
+    /* Slightly darker for open flap look */
     z-index: 100;
     transform-origin: top;
     transition: transform 0.8s ease 0.4s, z-index 0s linear 0.4s;
 }
 
+/* Side Flaps */
 .right-flap {
     top: 0;
     right: 0;
-    border-width: 100px 150px 100px 0;
-    border-color: transparent #839359 transparent transparent;
+    border-width: 120px 180px 120px 0;
+    border-color: transparent var(--paper-dark) transparent transparent;
     z-index: 90;
 }
 
 .bottom-flap {
     bottom: 0;
     left: 0;
-    border-width: 0 150px 110px 150px;
-    border-color: transparent transparent #839359 transparent;
+    border-width: 0 180px 130px 180px;
+    /* Made slightly taller to overlap well */
+    border-color: transparent transparent var(--paper-dark) transparent;
     z-index: 95;
+    filter: drop-shadow(0 -2px 5px rgba(0, 0, 0, 0.05));
 }
 
 .left-flap {
     top: 0;
     left: 0;
-    border-width: 100px 0 100px 150px;
-    border-color: transparent transparent transparent #839359;
+    border-width: 120px 0 120px 180px;
+    border-color: transparent transparent transparent var(--paper-dark);
     z-index: 90;
 }
 
@@ -104,39 +116,82 @@
     left: 50%;
     transform: translate(-50%, 60%);
     font-family: var(--font-script);
-    color: var(--cream);
+    color: var(--text-dark);
     font-size: 1.5rem;
     z-index: 101;
     opacity: 0;
     pointer-events: none;
 }
 
+/* Realistic Red Wax Seal */
 .wax-seal {
     position: absolute;
-    top: 50%;
+    top: 55%;
+    /* Adjusted for better centering on overlap */
     left: 50%;
-    transform: translate(-50%, -10%);
-    width: 60px;
-    height: 60px;
-    background: #C5A059;
-    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    /* Centered */
+    width: 90px;
+    height: 90px;
     z-index: 101;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #4A3B20;
-    font-family: var(--font-serif);
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), inset 0 2px 5px rgba(255, 255, 255, 0.4);
     cursor: pointer;
     transition: transform 0.2s ease, opacity 0.5s ease;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+
+    /* Wax Red Radial Gradient */
+    background: radial-gradient(circle at 30% 30%, #ff5e5e 0%, var(--wax-red) 50%, var(--wax-dark) 100%);
+
+    /* Irregular Shape */
+    border-radius: 50% 45% 55% 50% / 50% 55% 45% 50%;
+
+    /* Deep Shadows for 3D look */
+    box-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.4),
+        /* Drop shadow */
+        inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+        /* Highlight top-left */
+        inset -2px -2px 4px rgba(0, 0, 0, 0.3);
+    /* Shadow bottom-right */
+
+    /* Typography inside Seal */
+    color: #5c0a0a;
+    /* Dark etched look */
+    font-family: var(--font-script);
+    font-weight: bold;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2), 0px -1px 0px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.seal-initial {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.seal-ampersand {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1;
+    opacity: 0.9;
+}
+
+/* Inner Ring of the Seal */
+.wax-seal::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.1), inset -1px -1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .wax-seal:hover {
-    transform: translate(-50%, -10%) scale(1.05);
+    transform: translate(-50%, -50%) scale(1.05);
+    /* Maintain center on hover */
 }
 
 .letter {
@@ -145,7 +200,7 @@
     left: 10px;
     width: calc(100% - 20px);
     height: 100%;
-    background: var(--paper-white);
+    background: #fff;
     padding: 20px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -166,6 +221,8 @@
     transform: rotateX(180deg);
     z-index: 1;
     transition: transform 0.8s ease;
+    border-color: var(--paper-shadow) transparent transparent transparent;
+    /* Keep matching color for inside of flap */
 }
 
 .envelope-container.open .wax-seal {
@@ -197,28 +254,29 @@
 
 @media (min-width: 600px) {
     .envelope-wrapper {
-        width: 450px;
-        height: 300px;
+        width: 600px;
+        height: 400px;
     }
 
     .top-flap {
-        border-width: 165px 225px 0 225px;
+        border-width: 220px 300px 0 300px;
     }
 
     .right-flap {
-        border-width: 150px 225px 150px 0;
+        border-width: 200px 300px 200px 0;
     }
 
     .bottom-flap {
-        border-width: 0 225px 165px 225px;
+        border-width: 0 300px 220px 300px;
     }
 
     .left-flap {
-        border-width: 150px 0 150px 225px;
+        border-width: 200px 0 200px 300px;
     }
 
     .letter {
-        width: calc(100% - 40px);
-        left: 20px;
+        width: calc(100% - 60px);
+        /* Increased padding for larger size */
+        left: 30px;
     }
 }

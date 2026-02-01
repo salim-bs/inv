@@ -15,31 +15,52 @@ import FooterSection from "@/components/wedding/FooterSection";
 const Index = () => {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [shouldPlayMusic, setShouldPlayMusic] = useState(false);
 
   const handleEnvelopeClick = () => {
     if (!isEnvelopeOpen) {
       setIsEnvelopeOpen(true);
-      // Delay showing content interactions until envelope animation completes
-      // 2800ms total transition matches the Envelope internal timers
-      setTimeout(() => setShowContent(true), 2800);
     }
   };
 
+  const handleVideoTransition = () => {
+    setShowContent(true);
+    setShouldPlayMusic(true);
+  };
+
+  // Wedding data passed to components
+  // Wedding data passed to components
   // Wedding data passed to components
   // Wedding data passed to components
   const weddingData = {
     groomName: "Asma",
     brideName: "Khalil",
     date: "August 20, 2026",
-    time: "8:00 PM",
-    venue: "The papyrus",
-    venueAddress: "Route, ElKedoua,El Haouaria",
-    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.536239783398!2d10.998811775698215!3d37.02085867218505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x131d39e2d3900193%3A0x565b6ea928dcf8ea!2sThe%20papyrus!5e0!3m2!1sfr!2stn!4v1769717388430!5m2!1sfr!2stn"
+    locations: [
+      {
+        id: 'ceremony',
+        title: 'Marriage Place',
+        name: 'The Papyrus',
+        address: 'Route, ElKedoua, El Haouaria',
+        time: '5:00 PM',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.536239783398!2d10.998811775698215!3d37.02085867218505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x131d39e2d3900193%3A0x565b6ea928dcf8ea!2sThe%20papyrus!5e0!3m2!1sfr!2stn!4v1769717388430!5m2!1sfr!2stn',
+        icon: 'ring' as const
+      },
+      {
+        id: 'reception',
+        title: 'Wtteya',
+        name: 'Grand Ball Room',
+        address: '123 Party Avenue, Downtown',
+        time: '8:00 PM',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.536239783398!2d10.998811775698215!3d37.02085867218505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x131d39e2d3900193%3A0x565b6ea928dcf8ea!2sThe%20papyrus!5e0!3m2!1sfr!2stn!4v1769717388430!5m2!1sfr!2stn',
+        icon: 'party' as const
+      }
+    ]
   };
 
   return (
     <main className="bg-wedding-cream min-h-screen font-serif text-wedding-charcoal overflow-hidden">
-      <MusicPlayer autoPlayTrigger={isEnvelopeOpen} />
+      <MusicPlayer autoPlayTrigger={shouldPlayMusic} />
 
       <AnimatePresence mode="wait">
         {!showContent ? (
@@ -54,6 +75,7 @@ const Index = () => {
             <Envelope
               isOpen={isEnvelopeOpen}
               onClick={handleEnvelopeClick}
+              onTransition={handleVideoTransition}
               groomInitial={weddingData.groomName.charAt(0)}
               brideInitial={weddingData.brideName.charAt(0)}
               groomName={weddingData.groomName}
@@ -74,7 +96,7 @@ const Index = () => {
               groomName={weddingData.groomName}
               brideName={weddingData.brideName}
               date={weddingData.date}
-              time={weddingData.time}
+              time=""
             />
 
             <OurStorySection />
@@ -85,11 +107,7 @@ const Index = () => {
             <WeddingDetails
               groomName={weddingData.groomName}
               brideName={weddingData.brideName}
-              date={weddingData.date}
-              time={weddingData.time}
-              venue={weddingData.venue}
-              venueAddress={weddingData.venueAddress}
-              mapEmbedUrl={weddingData.mapEmbedUrl}
+              locations={weddingData.locations}
             />
 
             <InvitationMessage />

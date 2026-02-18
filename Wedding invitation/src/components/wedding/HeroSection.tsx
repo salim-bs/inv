@@ -28,62 +28,47 @@ const HeroSection = ({
         style={{ backgroundImage: `url(${heroCouple})` }}
       />
 
-      {/* Warm Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/80" />
+      {/* Darker Overlay for Text Contrast */}
+      <div className="absolute inset-0 bg-black/40" />
 
-      <div className="max-w-4xl w-full relative z-10">
-        <div className="bg-card/85 backdrop-blur-sm text-center p-8 md:p-12 lg:p-16 rounded-lg border border-primary/20">
-          {/* Top decorative element */}
-          <div className="text-secondary text-3xl mb-6">✿</div>
+      <div className="max-w-5xl w-full relative z-10 text-center flex flex-col items-center justify-center h-full min-h-[80vh]">
 
-          {/* Announcement */}
-          <p className="uppercase tracking-[0.3em] text-muted-foreground text-sm mb-8">
-            Together with their families
-          </p>
+        {/* Intro */}
+        <p className="uppercase tracking-[0.4em] text-white/90 text-sm md:text-base font-sans font-light mb-8 animate-fade-in delay-200">
+          Together with their families
+        </p>
 
-          {/* Couple Names */}
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-primary mb-4">
+        {/* Names */}
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8 animate-fade-up delay-300">
+          <h1 className="font-script text-7xl md:text-9xl text-white drop-shadow-lg">
             {groomName}
           </h1>
-
-          <div className="flex items-center justify-center gap-4 my-4">
-            <div className="h-px w-16 bg-secondary/50" />
-            <span className="font-serif text-3xl text-secondary italic">&</span>
-            <div className="h-px w-16 bg-secondary/50" />
-          </div>
-
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-primary mb-8">
+          <span className="font-script text-4xl md:text-6xl text-wedding-gold opacity-90">
+            &
+          </span>
+          <h1 className="font-script text-7xl md:text-9xl text-white drop-shadow-lg">
             {brideName}
           </h1>
-
-          <VintageDivider icon={<span className="text-secondary text-2xl">❦</span>} />
-
-          {/* Invitation Text */}
-          <p className="text-lg md:text-xl text-foreground/80 mb-6 font-medium">
-            Request the pleasure of your company
-            <br />
-            at the celebration of their marriage
-          </p>
-
-          {/* Date */}
-          <div className="bg-primary/10 rounded-lg py-6 px-8 inline-block">
-            <p className="uppercase tracking-[0.2em] text-primary text-sm mb-2">
-              Saturday
-            </p>
-            <p className="font-serif text-4xl md:text-5xl text-primary mb-2">
-              {date}
-            </p>
-            <p className="text-muted-foreground">
-              {time}
-            </p>
-          </div>
-
-          {/* Countdown Timer */}
-          <CountdownTimer targetDate={TARGET_DATE} />
-
-          {/* Bottom decorative element */}
-          <div className="text-secondary text-3xl mt-8">✿</div>
         </div>
+
+        {/* Date & Location */}
+        <div className="space-y-4 animate-fade-up delay-500">
+          <p className="font-elegant text-2xl md:text-4xl text-white tracking-widest uppercase border-y border-white/30 py-4 px-8 inline-block backdrop-blur-sm">
+            {date}
+          </p>
+          <p className="font-sans text-white/80 tracking-wider text-sm md:text-lg uppercase mt-4">
+            El Haouaria, Tunisia
+          </p>
+        </div>
+
+        {/* Countdown Timer (Optional - kept if desired, styled minimally) */}
+        <div className="mt-16 opacity-90 hover:opacity-100 transition-opacity">
+          {/* Passing transparent/white theme props if supported, or wrapped in a white-text context */}
+          <div className="text-white">
+            <CountdownTimer targetDate={TARGET_DATE} />
+          </div>
+        </div>
+
       </div>
     </section>
   );

@@ -2,54 +2,37 @@ import VintageDivider from "./VintageDivider";
 
 const FooterSection = () => {
   return (
-    <footer className="py-16 px-4 bg-primary text-primary-foreground">
-      <div className="max-w-4xl mx-auto text-center">
-        {/* Monogram */}
-        <div className="mb-8">
-          <div className="inline-block border-2 border-primary-foreground/30 rounded-full p-6">
-            <span className="font-serif text-4xl md:text-5xl">
-              A <span className="text-secondary">&</span> K
-            </span>
-          </div>
+    <footer className="py-20 px-4 bg-primary text-primary-foreground">
+      <div className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center gap-6">
+
+        {/* Heart Icon */}
+        <div className="text-secondary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-8 h-8 opacity-80"
+          >
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+          </svg>
         </div>
+
+        {/* Names */}
+        <h2 className="font-script text-5xl md:text-6xl text-primary-foreground tracking-wide">
+          Asma & Khalil
+        </h2>
 
         {/* Date */}
-        <p className="font-serif text-2xl mb-2">August 20, 2026</p>
-        <p className="text-primary-foreground/70 mb-8">El Haouaria, Tunisia</p>
-
-        <VintageDivider
-          icon={<span className="text-secondary">✦</span>}
-          className="[&::before]:!bg-gradient-to-r [&::before]:!from-transparent [&::before]:!to-primary-foreground/30 [&::after]:!bg-gradient-to-l [&::after]:!from-transparent [&::after]:!to-primary-foreground/30"
-        />
-
-        {/* Hashtag */}
-        <p className="font-serif text-xl text-secondary mb-6">
-          #AsmaAndKhalilForever
+        <p className="font-elegant text-xl md:text-2xl text-primary-foreground/80 tracking-widest uppercase">
+          August 20, 2026
         </p>
 
-        {/* Contact */}
-        <p className="text-primary-foreground/70 text-sm mb-2">
-          Questions? Reach out to us at
-        </p>
-        <a
-          href="mailto:wedding@asmaandkhalil.com"
-          className="text-secondary hover:underline"
-        >
-          wedding@asmaandkhalil.com
-        </a>
-
-        {/* Footer decorative */}
-        <div className="mt-12 text-3xl">
-          <span className="text-secondary">✿</span>
-          <span className="mx-4 text-primary-foreground/40">•</span>
-          <span className="text-secondary">❦</span>
-          <span className="mx-4 text-primary-foreground/40">•</span>
-          <span className="text-secondary">✿</span>
-        </div>
-
-        <p className="text-primary-foreground/50 text-xs mt-8">
-          Made with love for our special day
-        </p>
       </div>
     </footer>
   );

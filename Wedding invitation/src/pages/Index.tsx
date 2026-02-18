@@ -10,6 +10,9 @@ import HeroSection from "@/components/wedding/HeroSection";
 import OurStorySection from "@/components/wedding/OurStorySection";
 import PhotoStrip from "@/components/wedding/PhotoStrip";
 
+import venueCeremony from "@/assets/The Papyrus.jpg";
+import venueReception from "@/assets/venue-reception.jpg";
+
 import FooterSection from "@/components/wedding/FooterSection";
 
 const Index = () => {
@@ -44,7 +47,8 @@ const Index = () => {
         address: 'Route, ElKedoua, El Haouaria',
         time: '5:00 PM',
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.536239783398!2d10.998811775698215!3d37.02085867218505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x131d39e2d3900193%3A0x565b6ea928dcf8ea!2sThe%20papyrus!5e0!3m2!1sfr!2stn!4v1769717388430!5m2!1sfr!2stn',
-        icon: 'ring' as const
+        icon: 'ring' as const,
+        image: venueCeremony
       },
       {
         id: 'reception',
@@ -53,7 +57,8 @@ const Index = () => {
         address: '123 Party Avenue, Downtown',
         time: '8:00 PM',
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.536239783398!2d10.998811775698215!3d37.02085867218505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x131d39e2d3900193%3A0x565b6ea928dcf8ea!2sThe%20papyrus!5e0!3m2!1sfr!2stn!4v1769717388430!5m2!1sfr!2stn',
-        icon: 'party' as const
+        icon: 'party' as const,
+        image: venueReception
       }
     ]
   };

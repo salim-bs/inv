@@ -2,36 +2,70 @@ import couplePhoto1 from "@/assets/couple-photo-1.jpg";
 import couplePhoto2 from "@/assets/couple-photo-2.jpg";
 import couplePhoto3 from "@/assets/couple-photo-3.jpg";
 
+import { motion } from "framer-motion";
+
 const photos = [
-  { src: couplePhoto1, alt: "Couple walking in the hills", rotation: "-3deg" },
-  { src: couplePhoto2, alt: "Couple silhouette at sunset", rotation: "1deg" },
-  { src: couplePhoto3, alt: "Wedding rings", rotation: "2.5deg" },
+  { src: couplePhoto1, alt: "Couple walking in the hills", delay: 0 },
+  { src: couplePhoto2, alt: "Couple silhouette at sunset", delay: 0.2, className: "md:translate-y-12" }, // Staggered down
+  { src: couplePhoto3, alt: "Wedding rings", delay: 0.4 },
 ];
 
 const PhotoStrip = () => {
   return (
-    <section className="py-16 px-4 bg-background">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+    <section className="py-24 px-4 bg-wedding-cream/30 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
+
+        {/* Creative Photo Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 items-start">
           {photos.map((photo, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white p-2 pb-10 shadow-lg hover:shadow-xl transition-shadow"
-              style={{ transform: `rotate(${photo.rotation})` }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: photo.delay, ease: "easeOut" }}
+              className={`relative group ${photo.className || ""}`}
             >
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                className="w-40 h-40 md:w-52 md:h-52 object-cover"
-                loading="lazy"
+              {/* Floating Gold Frame (Background) */}
+              <div
+                className="absolute top-4 -right-4 w-full h-full border border-wedding-gold/60 rounded-sm z-0 transition-transform duration-500 ease-out group-hover:translate-x-[-1rem] group-hover:translate-y-[1rem]"
               />
-            </div>
+
+              {/* Image Container */}
+              <div className="relative z-10 aspect-[3/4] overflow-hidden rounded-sm shadow-md">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  loading="lazy"
+                />
+
+                {/* Subtle Overlay on Hover */}
+                <div className="absolute inset-0 bg-wedding-charcoal/0 group-hover:bg-wedding-charcoal/10 transition-colors duration-500" />
+              </div>
+            </motion.div>
           ))}
         </div>
-        
-        <p className="text-center text-muted-foreground italic mt-8 font-serif text-lg">
-          "Every love story is beautiful, but ours is my favorite"
-        </p>
+
+        {/* Artistic Quote */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="text-center mt-24 md:mt-32 max-w-2xl mx-auto relative"
+        >
+          {/* Decorative Line */}
+          <div className="w-px h-16 bg-wedding-gold/40 mx-auto mb-6" />
+
+          <p className="text-center text-wedding-charcoal/80 italic font-elegant text-3xl md:text-5xl leading-tight">
+            "Every love story is beautiful,<br /> but ours is my favorite"
+          </p>
+
+          {/* Decorative Line */}
+          <div className="w-px h-16 bg-wedding-gold/40 mx-auto mt-6" />
+        </motion.div>
+
       </div>
     </section>
   );

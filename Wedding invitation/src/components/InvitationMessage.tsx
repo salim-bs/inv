@@ -32,15 +32,7 @@ const InvitationMessage = ({
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <svg width="60" height="60" viewBox="0 0 60 60" className="text-wedding-sage">
-                        <circle cx="30" cy="30" r="28" stroke="currentColor" strokeWidth="0.5" fill="none" />
-                        <path
-                            d="M30 15 L30 45 M15 30 L45 30"
-                            stroke="currentColor"
-                            strokeWidth="0.5"
-                        />
-                        <circle cx="30" cy="30" r="8" stroke="currentColor" strokeWidth="0.5" fill="none" />
-                    </svg>
+                    <Heart className="w-16 h-16 text-wedding-gold fill-wedding-gold/20" strokeWidth={1} />
                 </motion.div>
 
                 {/* Message text */}

@@ -35,6 +35,16 @@ const Envelope: React.FC<EnvelopeProps> = ({ isOpen, onClick, onTransition }) =>
         }
     };
 
+    const handlePlayAndOpen = () => {
+        if (videoRef.current) {
+            // Play immediately on user interaction to satisfy strict mobile browsers
+            videoRef.current.play().catch(error => {
+                console.error("Video play failed:", error);
+            });
+        }
+        onClick();
+    };
+
     return (
         <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
             <video
@@ -42,8 +52,12 @@ const Envelope: React.FC<EnvelopeProps> = ({ isOpen, onClick, onTransition }) =>
                 src={envelopeVideo}
                 className="w-full h-full object-cover"
                 playsInline
+                // @ts-ignore - specific webkit attribute for broader compatibility
+                webkit-playsinline="true"
+                x5-playsinline="true"
+                preload="auto"
                 muted
-                onClick={onClick}
+                onClick={handlePlayAndOpen}
                 onTimeUpdate={handleTimeUpdate}
             />
         </div>

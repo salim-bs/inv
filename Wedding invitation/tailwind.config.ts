@@ -69,14 +69,7 @@ export default {
           charcoal: "hsl(var(--charcoal))",
           gold: "hsl(var(--gold-accent))",
         },
-        // Retro colors from remix template (kept for compatibility)
-        butter: "hsl(var(--butter))",
-        peach: "hsl(var(--peach))",
-        "faded-pink": "hsl(var(--faded-pink))",
         // cream is duplicated but handled by the wedding object above effectively if used with wedding.cream
-        mustard: "hsl(var(--mustard))",
-        wine: "hsl(var(--wine))",
-        "warm-brown": "hsl(var(--warm-brown))",
       },
       fontFamily: {
         // Merged Fonts

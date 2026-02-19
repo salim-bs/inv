@@ -15,8 +15,8 @@ const PhotoStrip = () => {
     <section className="py-24 px-4 bg-wedding-cream/30 overflow-hidden">
       <div className="max-w-6xl mx-auto">
 
-        {/* Creative Photo Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 items-start">
+        {/* Creative Photo Grid / Carousel */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 gap-4 pb-12 -mx-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0 md:overflow-visible">
           {photos.map((photo, index) => (
             <motion.div
               key={index}
@@ -24,7 +24,7 @@ const PhotoStrip = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: photo.delay, ease: "easeOut" }}
-              className={`relative group ${photo.className || ""}`}
+              className={`relative group flex-shrink-0 w-[85vw] md:w-auto snap-center ${photo.className || ""}`}
             >
               {/* Floating Gold Frame (Background) */}
               <div
@@ -38,6 +38,7 @@ const PhotoStrip = () => {
                   alt={photo.alt}
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   loading="lazy"
+                  draggable="false"
                 />
 
                 {/* Subtle Overlay on Hover */}

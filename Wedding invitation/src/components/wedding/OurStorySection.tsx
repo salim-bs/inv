@@ -28,7 +28,7 @@ const OurStorySection = () => {
 
         {/* Header */}
         <div className="text-center mb-20">
-          <span className="text-wedding-sage text-sm tracking-[0.3em] uppercase block mb-4">
+          <span className="text-wedding-gold text-sm tracking-[0.3em] uppercase block mb-4">
             How it began
           </span>
           <h2 className="font-script text-5xl md:text-6xl text-wedding-charcoal">
@@ -37,29 +37,23 @@ const OurStorySection = () => {
         </div>
 
         {/* Timeline */}
-        <div className="relative border-l border-wedding-sage/20 ml-6 md:mx-auto md:border-l-0 md:flex md:flex-col md:items-center space-y-12 md:space-y-0">
+        <div className="relative flex flex-col items-center space-y-12">
 
-          {/* Desktop Center Line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-wedding-sage/20 -translate-x-1/2" />
+          {/* Center Line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-wedding-gold/30 -translate-x-1/2" />
 
           {storyMilestones.map((milestone, index) => (
             <div
               key={milestone.year}
-              className={`relative flex items-start md:items-center md:justify-between w-full md:w-[800px] ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+              className={`relative flex items-center justify-between w-full max-w-4xl gap-4 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"
                 }`}
             >
-              {/* Icon Marker */}
-              <div className="absolute left-[-25px] md:static md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center bg-white border border-wedding-sage/30 rounded-full z-10 shadow-sm">
-                {milestone.icon}
-              </div>
-
               {/* Content Box */}
-              <div className={`pl-8 md:pl-0 md:w-[350px] ${index % 2 === 0 ? "md:text-right md:pr-12" : "md:text-left md:pl-12"
-                }`}>
-                <span className="font-elegant text-3xl text-wedding-gold block mb-2">
+              <div className={`flex-1 ${index % 2 === 0 ? "text-right" : "text-left"}`}>
+                <span className="font-elegant text-2xl md:text-3xl text-wedding-gold block mb-2">
                   {milestone.year}
                 </span>
-                <h3 className="font-serif text-2xl text-wedding-charcoal mb-3">
+                <h3 className="font-serif text-xl md:text-2xl text-wedding-charcoal mb-3">
                   {milestone.title}
                 </h3>
                 <p className="font-sans text-wedding-charcoal/70 leading-relaxed text-sm">
@@ -67,8 +61,13 @@ const OurStorySection = () => {
                 </p>
               </div>
 
-              {/* Empty Space for opposite side on Desktop */}
-              <div className="hidden md:block md:w-[350px]" />
+              {/* Icon Marker */}
+              <div className="relative z-10 flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white border border-wedding-gold rounded-full shadow-sm">
+                {milestone.icon}
+              </div>
+
+              {/* Empty Space to balance the Flex row */}
+              <div className="flex-1" />
             </div>
           ))}
         </div>

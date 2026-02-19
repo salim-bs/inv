@@ -134,6 +134,7 @@ const WeddingDetails = ({
                                             src={selectedLocation.image}
                                             alt={selectedLocation.name}
                                             className="w-full h-full object-cover opacity-90"
+                                            loading="lazy"
                                         />
                                     )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">

@@ -110,8 +110,6 @@ const Index = () => {
 
             {/* Replaced EventDetailsSection with the requested WeddingDetails (Map) */}
             <WeddingDetails
-              groomName={weddingData.groomName}
-              brideName={weddingData.brideName}
               locations={weddingData.locations}
             />
 

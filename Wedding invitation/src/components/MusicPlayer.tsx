@@ -61,7 +61,7 @@ const MusicPlayer = ({ autoPlayTrigger = false }: MusicPlayerProps) => {
                         rounded-full w-14 h-14 p-0 shadow-2xl transition-all duration-500
                         ${isPlaying
                             ? "bg-wedding-gold text-white border-wedding-gold hover:bg-wedding-gold/90"
-                            : "bg-white/90 backdrop-blur-md text-wedding-charcoal border-wedding-sage/30 hover:border-wedding-gold hover:text-wedding-gold"
+                            : "bg-white/90 backdrop-blur-md text-wedding-charcoal border-wedding-gold/40 hover:border-wedding-gold hover:text-wedding-gold"
                         }
                     `}
                 >

@@ -21,12 +21,15 @@ const HeroSection = ({
   const TARGET_DATE = new Date("2026-08-20T16:00:00");
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-20 px-4 relative overflow-hidden">
+    <section className="min-h-[100dvh] flex items-center justify-center py-20 px-4 relative overflow-hidden">
       {/* Background Photo */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroCouple})` }}
-      />
+      <div className="absolute inset-0">
+        <img
+          src={heroCouple}
+          alt="Couple"
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
 
       {/* Darker Overlay for Text Contrast */}
       <div className="absolute inset-0 bg-black/40" />
@@ -39,14 +42,14 @@ const HeroSection = ({
         </p>
 
         {/* Names */}
-        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8 animate-fade-up delay-300">
-          <h1 className="font-script text-7xl md:text-9xl text-white drop-shadow-lg">
+        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-8 mb-8 animate-fade-up delay-300">
+          <h1 className="font-script text-[3.5rem] leading-tight md:text-9xl text-white drop-shadow-lg text-center">
             {groomName}
           </h1>
-          <span className="font-script text-4xl md:text-6xl text-wedding-gold opacity-90">
+          <span className="font-script text-3xl md:text-6xl text-wedding-gold opacity-90 my-2 md:my-0">
             &
           </span>
-          <h1 className="font-script text-7xl md:text-9xl text-white drop-shadow-lg">
+          <h1 className="font-script text-[3.5rem] leading-tight md:text-9xl text-white drop-shadow-lg text-center">
             {brideName}
           </h1>
         </div>

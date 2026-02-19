@@ -2,11 +2,11 @@ import VintageDivider from "./VintageDivider";
 
 const FooterSection = () => {
   return (
-    <footer className="py-20 px-4 bg-primary text-primary-foreground">
+    <footer className="py-20 px-4 bg-wedding-charcoal text-wedding-cream">
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center gap-6">
 
         {/* Heart Icon */}
-        <div className="text-secondary">
+        <div className="text-wedding-gold">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -24,12 +24,12 @@ const FooterSection = () => {
         </div>
 
         {/* Names */}
-        <h2 className="font-script text-5xl md:text-6xl text-primary-foreground tracking-wide">
+        <h2 className="font-script text-5xl md:text-6xl text-wedding-cream tracking-wide">
           Asma & Khalil
         </h2>
 
         {/* Date */}
-        <p className="font-elegant text-xl md:text-2xl text-primary-foreground/80 tracking-widest uppercase">
+        <p className="font-elegant text-xl md:text-2xl text-wedding-cream/80 tracking-widest uppercase">
           August 20, 2026
         </p>
 

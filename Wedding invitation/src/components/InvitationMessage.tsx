@@ -47,9 +47,9 @@ const InvitationMessage = ({
                     animate={isInView ? { opacity: 1 } : {}}
                     transition={{ duration: 1, delay: 0.5 }}
                 >
-                    <div className="w-16 h-px bg-wedding-sage-light" />
-                    <Heart className="w-4 h-4 text-wedding-sage fill-wedding-sage" />
-                    <div className="w-16 h-px bg-wedding-sage-light" />
+                    <div className="w-16 h-px bg-wedding-gold/40" />
+                    <Heart className="w-4 h-4 text-wedding-gold/60 fill-wedding-gold/40" />
+                    <div className="w-16 h-px bg-wedding-gold/40" />
                 </motion.div>
             </motion.div>
         </section>

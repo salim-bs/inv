@@ -23,11 +23,11 @@ const HeroSection = ({
   return (
     <section className="min-h-[100dvh] flex items-center justify-center py-20 px-4 relative overflow-hidden">
       {/* Background Photo */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-wedding-charcoal">
         <img
           src={heroCouple}
           alt="Couple"
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-contain md:object-cover object-center"
         />
       </div>
 

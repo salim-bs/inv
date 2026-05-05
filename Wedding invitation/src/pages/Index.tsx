@@ -55,10 +55,10 @@ const Index = () => {
         id: 'reception',
         title: 'Wteya',
         name: 'Dar Samia Samoud',
-        address: 'Près de Auto ecole islem jbeli',
+        address: 'Près de Ben moussa school "collège" Les Lauréats Kélibia',
         time: '20:00',
         date: '27 Juin',
-        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d369.7722180015375!2d11.102244823894447!3d36.84158404668823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x131d339c4a190f57%3A0xb7dd8afc371b79d3!2sAuto%20ecole%20islem%20jbeli!5e0!3m2!1sfr!2stn!4v1777987592379!5m2!1sfr!2stn',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d483.21700927511375!2d11.103340916095153!3d36.841729166051536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDUwJzMwLjkiTiAxMcKwMDYnMTEuNyJF!5e0!3m2!1sfr!2stn!4v1778004986143!5m2!1sfr!2stn',
         icon: 'party' as const,
         image: venueReception
       }

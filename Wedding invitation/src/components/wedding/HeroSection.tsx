@@ -1,4 +1,4 @@
-import heroCouple from "@/assets/hero-couple.jpg";
+import heroVideo from "@/Video/b_b_d_video_mp_.mp4";
 import VintageDivider from "./VintageDivider";
 import CountdownTimer from "./CountdownTimer";
 
@@ -22,12 +22,14 @@ const HeroSection = ({
 
   return (
     <section className="min-h-[100dvh] flex items-center justify-center py-20 px-4 relative overflow-hidden">
-      {/* Background Photo */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <img
-          src={heroCouple}
-          alt="Couple"
+        <video
+          src={heroVideo}
           className="w-full h-full object-cover object-center"
+          autoPlay
+          muted
+          playsInline
         />
       </div>
 

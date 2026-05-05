@@ -2,16 +2,10 @@ import { Heart, Gem, PartyPopper } from "lucide-react";
 
 const storyMilestones = [
   {
-    year: "2018",
-    title: "First Meeting",
-    description: "We met while hanging out with friends. A casual gathering turned into the beginning of our forever.",
+    year: "2025",
+    title: "First Meeting & Proposal",
+    description: "We met early that year, and our beautiful connection quickly turned into a forever promise when Khalil proposed.",
     icon: <Heart className="w-5 h-5 text-wedding-gold" fill="currentColor" />
-  },
-  {
-    year: "2024",
-    title: "The Proposal",
-    description: "Khalil proposed in a moment of pure magic, asking the question that would change our lives forever.",
-    icon: <Gem className="w-5 h-5 text-wedding-gold" />
   },
   {
     year: "2026",

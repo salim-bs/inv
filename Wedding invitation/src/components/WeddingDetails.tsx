@@ -7,6 +7,7 @@ export interface WeddingLocation {
     title: string;
     name: string;
     address: string;
+    date?: string;
     time: string;
     mapEmbedUrl: string;
     icon?: 'church' | 'party' | 'ring';
@@ -155,8 +156,10 @@ const WeddingDetails = ({
                                         <div className="flex items-start gap-4">
                                             <Clock className="w-5 h-5 text-wedding-gold mt-1" />
                                             <div>
-                                                <h4 className="font-sans text-xs uppercase tracking-widest text-wedding-sage mb-1">Time</h4>
-                                                <p className="font-elegant text-xl text-wedding-charcoal">{selectedLocation.time}</p>
+                                                <h4 className="font-sans text-xs uppercase tracking-widest text-wedding-sage mb-1">Date & Time</h4>
+                                                <p className="font-elegant text-xl text-wedding-charcoal">
+                                                    {selectedLocation.date && `${selectedLocation.date} à `}{selectedLocation.time}
+                                                </p>
                                             </div>
                                         </div>
 

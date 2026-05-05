@@ -38,25 +38,27 @@ const Index = () => {
   const weddingData = {
     groomName: "Asma",
     brideName: "Khalil",
-    date: "August 20, 2026",
+    date: "28 Juin 2026",
     locations: [
       {
         id: 'ceremony',
-        title: 'Marriage Place',
+        title: 'Marriage',
         name: 'The Papyrus',
         address: 'Route, ElKedoua, El Haouaria',
-        time: '5:00 PM',
+        time: '21:00',
+        date: '28 Juin',
         mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.536239783398!2d10.998811775698215!3d37.02085867218505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x131d39e2d3900193%3A0x565b6ea928dcf8ea!2sThe%20papyrus!5e0!3m2!1sfr!2stn!4v1769717388430!5m2!1sfr!2stn',
         icon: 'ring' as const,
         image: venueCeremony
       },
       {
         id: 'reception',
-        title: 'Wtteya',
-        name: 'Grand Ball Room',
-        address: '123 Party Avenue, Downtown',
-        time: '8:00 PM',
-        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.536239783398!2d10.998811775698215!3d37.02085867218505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x131d39e2d3900193%3A0x565b6ea928dcf8ea!2sThe%20papyrus!5e0!3m2!1sfr!2stn!4v1769717388430!5m2!1sfr!2stn',
+        title: 'Wteya',
+        name: 'Dar Samia Samoud',
+        address: 'Près de Auto ecole islem jbeli',
+        time: '20:00',
+        date: '27 Juin',
+        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d369.7722180015375!2d11.102244823894447!3d36.84158404668823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x131d339c4a190f57%3A0xb7dd8afc371b79d3!2sAuto%20ecole%20islem%20jbeli!5e0!3m2!1sfr!2stn!4v1777987592379!5m2!1sfr!2stn',
         icon: 'party' as const,
         image: venueReception
       }
@@ -117,7 +119,7 @@ const Index = () => {
 
 
 
-            <FooterSection />
+            <FooterSection date={weddingData.date} />
           </motion.div>
         )}
       </AnimatePresence>

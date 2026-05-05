@@ -1,6 +1,10 @@
 import VintageDivider from "./VintageDivider";
 
-const FooterSection = () => {
+interface FooterSectionProps {
+  date?: string;
+}
+
+const FooterSection = ({ date = "28 Juin 2026" }: FooterSectionProps) => {
   return (
     <footer className="py-20 px-4 bg-wedding-charcoal text-wedding-cream">
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center gap-6">
@@ -30,7 +34,7 @@ const FooterSection = () => {
 
         {/* Date */}
         <p className="font-elegant text-xl md:text-2xl text-wedding-cream/80 tracking-widest uppercase">
-          August 20, 2026
+          {date}
         </p>
 
       </div>

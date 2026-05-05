@@ -1,13 +1,11 @@
-import couplePhoto1 from "@/assets/couple-photo-1.jpg";
-import couplePhoto2 from "@/assets/couple-photo-2.jpg";
-import couplePhoto3 from "@/assets/couple-photo-3.jpg";
+import photo1 from "@/assets/1 (1).jpg";
+import photo2 from "@/assets/1 (2).jpg";
 
 import { motion } from "framer-motion";
 
 const photos = [
-  { src: couplePhoto1, alt: "Couple walking in the hills", delay: 0 },
-  { src: couplePhoto2, alt: "Couple silhouette at sunset", delay: 0.2, className: "md:translate-y-12" }, // Staggered down
-  { src: couplePhoto3, alt: "Wedding rings", delay: 0.4 },
+  { src: photo1, alt: "Our Photo 1", delay: 0 },
+  { src: photo2, alt: "Our Photo 2", delay: 0.2, className: "md:translate-y-12" },
 ];
 
 const PhotoStrip = () => {
@@ -16,7 +14,7 @@ const PhotoStrip = () => {
       <div className="max-w-6xl mx-auto">
 
         {/* Creative Photo Grid / Carousel */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 gap-4 pb-12 -mx-4 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0 md:overflow-visible">
+        <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 gap-4 pb-12 -mx-4 md:mx-auto md:max-w-4xl md:grid md:grid-cols-2 md:gap-16 md:pb-0 md:overflow-visible justify-center">
           {photos.map((photo, index) => (
             <motion.div
               key={index}

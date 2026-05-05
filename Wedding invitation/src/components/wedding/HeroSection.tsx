@@ -12,13 +12,13 @@ interface HeroSectionProps {
 const HeroSection = ({
   groomName = "Emma",
   brideName = "James",
-  date = "June 15, 2025",
+  date = "28 Juin 2026",
   time = "at four o'clock in the afternoon"
 }: HeroSectionProps) => { // Updated default date for countdown logic below if needed, but props take precedence
 
   // Parse the date string "August 20, 2026" or similar to a Date object for the timer
   // For simplicity, hardcoding the target date based on user request for the countdown
-  const TARGET_DATE = new Date("2026-08-20T16:00:00");
+  const TARGET_DATE = new Date("2026-06-28T21:00:00");
 
   return (
     <section className="min-h-[100dvh] flex items-center justify-center py-20 px-4 relative overflow-hidden">

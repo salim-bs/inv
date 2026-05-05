@@ -1,4 +1,4 @@
-import { Heart, Gem, Church } from "lucide-react";
+import { Heart, Gem, PartyPopper } from "lucide-react";
 
 const storyMilestones = [
   {
@@ -17,7 +17,7 @@ const storyMilestones = [
     year: "2026",
     title: "The Wedding",
     description: "We invite you to join us as we say 'I do' and celebrate the start of our greatest adventure.",
-    icon: <Church className="w-5 h-5 text-wedding-gold" />
+    icon: <PartyPopper className="w-5 h-5 text-wedding-gold" />
   }
 ];
 

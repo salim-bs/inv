@@ -1,19 +1,18 @@
-import { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Envelope from "@/components/Envelope";
 import MusicPlayer from "@/components/MusicPlayer";
-import WeddingDetails from "@/components/WeddingDetails";
-import InvitationMessage from "@/components/InvitationMessage";
-
-// Existing components from the new template
-import HeroSection from "@/components/wedding/HeroSection";
-import OurStorySection from "@/components/wedding/OurStorySection";
-import PhotoStrip from "@/components/wedding/PhotoStrip";
 
 import venueCeremony from "@/assets/The Papyrus.jpg";
 import venueReception from "@/assets/venue-reception.jpg";
 
-import FooterSection from "@/components/wedding/FooterSection";
+// Lazy load heavy components
+const HeroSection = React.lazy(() => import("@/components/wedding/HeroSection"));
+const OurStorySection = React.lazy(() => import("@/components/wedding/OurStorySection"));
+const PhotoStrip = React.lazy(() => import("@/components/wedding/PhotoStrip"));
+const WeddingDetails = React.lazy(() => import("@/components/WeddingDetails"));
+const InvitationMessage = React.lazy(() => import("@/components/InvitationMessage"));
+const FooterSection = React.lazy(() => import("@/components/wedding/FooterSection"));
 
 const Index = () => {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
@@ -98,28 +97,32 @@ const Index = () => {
             transition={{ duration: 1.5 }}
             className="w-full"
           >
-            {/* Main Single Page Content */}
-            <HeroSection
-              groomName={weddingData.groomName}
-              brideName={weddingData.brideName}
-              date={weddingData.date}
-              time=""
-            />
+            <Suspense fallback={
+              <div className="min-h-screen flex flex-col items-center justify-center bg-wedding-cream text-wedding-gold gap-4">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-wedding-gold"></div>
+                <p className="font-elegant tracking-[0.2em] uppercase text-sm">Opening...</p>
+              </div>
+            }>
+              {/* Main Single Page Content */}
+              <HeroSection
+                groomName={weddingData.groomName}
+                brideName={weddingData.brideName}
+                date={weddingData.date}
+                time=""
+              />
 
-            <OurStorySection />
+              <OurStorySection />
 
-            <PhotoStrip />
+              <PhotoStrip />
 
-            {/* Replaced EventDetailsSection with the requested WeddingDetails (Map) */}
-            <WeddingDetails
-              locations={weddingData.locations}
-            />
+              <WeddingDetails
+                locations={weddingData.locations}
+              />
 
-            <InvitationMessage />
+              <InvitationMessage />
 
-
-
-            <FooterSection date={weddingData.date} />
+              <FooterSection date={weddingData.date} />
+            </Suspense>
           </motion.div>
         )}
       </AnimatePresence>
